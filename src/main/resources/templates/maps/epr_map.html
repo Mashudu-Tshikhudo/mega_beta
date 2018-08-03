@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>EPR Map</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link REL="SHORTCUT ICON" HREF="../img/Mega_logo.png"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+ <link href="../css/epr_map.css" rel="stylesheet"></link>
+ 
+
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<!-- <script   type="text/javascript" src="../js/epr_map.js"></script> -->
+		<script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div id="page-wrapper">
+	
+		<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="/"> <img alt="Brand"
+						src="../img/Mega_logo.png"
+						style="max-width: 100px; margin-top: -16px; margin-left: -16px; height: 52px;"></img>
+					</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        	
+        <li><input type="button" class="btn btn-success navbar-btn" onclick="location.href='/welcome';" value="Dashboard" ></input></li>
+       
+      
+		  <!-- <li><button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Filters
+		  <span class="caret"></span></button>
+		  <ul class="dropdown-menu">
+		  	<li><a href="javascript:allGraphs()">All</a></li>
+		  	<li><a href="javascript:smmes()">SMMEs</a></li>
+		    <li><a href="javascript:housing()">Housing</a></li>
+		    <li><a href="javascript:agriculture()">Agriculture</a></li>
+		    <li><a href="javascript:cooperatives()">Cooperatives</a></li>
+		   </ul>	</li> -->
+       </ul>
+       	
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Admin</a></li>
+      </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input onkeyup="searchClient()" id="myInput" type="text" class="form-control" placeholder="Search for client"></input>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>        
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</nav>
+		
+	</div>
+	
+	<div id="map">
+	
+	
+	
+	</div>
+	
+	<div id="EhlanzeniDistrictMunicipality" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">
+                           	Ehlanzeni District Municipality
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <table style="width:100%" id="results" class="table table-bordered table-hover">
+								<!-- <caption id="tableheader">All Funding</caption> -->
+								<thead id="tableheading">
+									<tr>
+										
+										<th width="25%">Client Name</th>
+										<th width="25%">Municipality</th>
+										<th width="25%">Address</th>
+										<th width="25%">Contacts</th>
+										
+										
+										
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									    <td>Nst Installation (Pty) Ltd</td>
+									    <td>Mbombela Local Municipality</td> 
+									    <td></td>
+									    <td>013 973 1830</td>
+									  </tr>
+									  <tr>
+									    <td>Leratong Electrical</td>
+									    <td>Nkomazi Local Municipality</td> 
+									    <td></td>
+									    <td>015 307 3338</td>
+									  </tr>
+									  <tr>
+									    <td>Mahlangu Veronica</td>
+									    <td>Bushbuckridge Local Municipality</td> 
+									    <td></td>
+									    <td>013 932 4487</td>
+									  </tr>
+								</tbody>
+							</table>
+                            <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Sent your message successfully!</h3> </div>
+                            <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div id="GertSibandeDistrictMunicipality" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">
+                           	Gert Sibande District Municipality
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <table style="width:100%" id="results" class="table table-bordered table-hover">
+								<!-- <caption id="tableheader">All Funding</caption> -->
+								<thead id="tableheading">
+									<tr>
+										
+										<th width="25%">Client Name</th>
+										<th width="25%">Municipality</th>
+										<th width="25%">Address</th>
+										<th width="25%">Contacts</th>
+										
+										
+										
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									    <td>Nst Installation (Pty) Ltd</td>
+									    <td>Chief Albert Luthuli Local Municipality</td> 
+									    <td></td>
+									    <td>013 973 1830</td>
+									  </tr>
+									  <tr>
+									    <td>Leratong Electrical</td>
+									    <td>Dr Pixley Ka Isaka Seme Local Municipality</td> 
+									    <td></td>
+									    <td>015 307 3338</td>
+									  </tr>
+									  <tr>
+									    <td>Lekwa Local Municipality</td>
+									    <td>Bushbuckridge Local Municipality</td> 
+									    <td></td>
+									    <td>013 932 4487</td>
+									  </tr>
+								</tbody>
+							</table>
+                            <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Sent your message successfully!</h3> </div>
+                            <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div id="NkangalaDistrictMunicipality" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">
+                           	Nkangala District Municipality
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <table style="width:100%" id="results" class="table table-bordered table-hover">
+								<!-- <caption id="tableheader">All Funding</caption> -->
+								<thead id="tableheading">
+									<tr>
+										
+										<th width="25%">Client Name</th>
+										<th width="25%">Municipality</th>
+										<th width="25%">Address</th>
+										<th width="25%">Contacts</th>
+										
+										
+										
+									</tr>
+								</thead>
+								<tbody>
+									 <tr>
+									    <td>Sibanyoni Samuel Jabulane</td>
+									    <td>Emakhazeni Local Municipality</td> 
+									    <td></td>
+									    <td>013 973 1830</td>
+									  </tr>
+									  <tr>
+									    <td>Phukubje Optometrist (Pty) Ltd</td>
+									    <td>Steve Tshwete Local Municipality</td> 
+									    <td></td>
+									    <td>015 307 3338</td>
+									  </tr>
+									  <tr>
+									    <td>Torun General Trading</td>
+									    <td>Thembisile Hani Local Municipality</td> 
+									    <td></td>
+									    <td>013 932 4487</td>
+									  </tr>
+								</tbody>
+							</table>
+                            <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Sent your message successfully!</h3> </div>
+                            <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="Ekandustria" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">
+                           	Ekandustria
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <table style="width:100%" id="results" class="table table-bordered table-hover">
+								<!-- <caption id="tableheader">All Funding</caption> -->
+								<thead id="tableheading">
+									<tr>
+										
+										<th width="25%">Client Name</th>
+										<th width="25%">Municipality</th>
+										<th width="25%">Address</th>
+										<th width="25%">Contacts</th>
+										
+										
+										
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									    <td>Langa Angel Lindokuhle</td>
+									    <td>City of Tshwane Metropolitan Municipality</td> 
+									    <td></td>
+									    <td>013 973 1830</td>
+									  </tr>
+									  <tr>
+									    <td>Lezmin 1830 CC</td>
+									    <td>City of Tshwane Metropolitan Municipality</td> 
+									    <td></td>
+									    <td>015 307 3338</td>
+									  </tr>
+									  <tr>
+									    <td>Nkosi Themba Abednigo</td>
+									    <td>City of Tshwane Metropolitan Municipality</td> 
+									    <td></td>
+									    <td>013 932 4487</td>
+									  </tr>
+								</tbody>
+							</table>
+                            <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Sent your message successfully!</h3> </div>
+                            <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	<!-- <div class="container-fluid">
+		<div class="row content">
+
+			<div class="col-sm-9">
+				<div align="center" class="row">
+					
+						
+					
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<footer class="container-fluid">
+		<center>
+			<p>www.mega.gov.za</p>
+		</center>
+	</footer>
+</body>
+<!-- <script type="text/javascript">
+function myMap() {
+	  var myCenter = new google.maps.LatLng(-25.4778689,30.9753368);
+	  var mapCanvas = document.getElementById("map");
+	  var mapOptions = {center: myCenter, zoom: 19};
+	  var map = new google.maps.Map(mapCanvas, mapOptions);
+	  var marker = new google.maps.Marker({position:myCenter});
+	  marker.setMap(map);
+	}
+</script> 
+
+<script type="text/javascript"> 
+function myMap() {
+   /* var address = "1 sportica crescent,tygervalley,Cape Town"; */
+   var json1 = {
+   "address" : [
+    "1 sportica crescent,tygervalley,Cape Town",
+    "5 Solomon Mahlangu Cresent,Mandela Park, Cape Town",
+    "10 Solomon Mahlangu Cresent,Mandela Park, Cape Town"
+    
+    ]
+   
+   };
+   
+   var marker;
+   var infowindow;
+   var mapCanvas = document.getElementById("map");
+   var mapOptions = {mapTypeId: google.maps.MapTypeId.TERRAIN, zoom: 19};
+   var map = new google.maps.Map(mapCanvas,mapOptions);
+   var i;
+   
+   $.each(json1.address, function (key, data) {
+   var geocoder = new google.maps.Geocoder();
+
+   geocoder.geocode({
+      "address": data
+   }, 
+   function(results, status) {
+      if(status == google.maps.GeocoderStatus.OK) {
+    	  marker = new google.maps.Marker({
+            position: results[0].geometry.location,
+            map: map
+         });
+    	 
+    	 infowindow = new google.maps.InfoWindow({
+              content: data
+            });
+    	 
+         map.setCenter(results[0].geometry.location);
+         
+         marker.addListener('click', function() {
+             infowindow.open(map, marker);
+           });
+         
+         
+      }
+   });
+
+  
+  });
+   
+    
+}
+
+function bindInfoWindow(marker, map, infowindow, strDescription) {
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(strDescription);
+        infowindow.open(map, marker);
+    });
+}
+
+
+   </script> -->
+<script>
+
+var map;
+var icon = "http://path/to/icon.png";
+var json = "http://path/to/universities.json";
+var infowindow;
+
+function myMap() {
+	infowindow = new google.maps.InfoWindow();
+    var mapProp = {
+        center: new google.maps.LatLng(-26.437465, 29.961598), //LLANDRINDOD WELLS
+        zoom: 7,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map(document.getElementById("map"), mapProp);
+
+    //  $.getJSON(json, function(json1) {
+    var json1 = {
+        "universities": [
+            {
+                "title": "EhlanzeniDistrictMunicipality",
+                "website": "Bushbuckridge Local Municipality, "+
+                	"City of Mbombela Local Municipality, "+
+                	"Mbombela Local Municipality, "+
+                	"Nkomazi Local Municipality, "+
+                	"Thaba Chweu Local Municipality",
+                "phone": "013 759 9111",
+                "lat": -25.294534,  
+                "lng": 31.258160},
+            {
+                	"title": "GertSibandeDistrictMunicipality",
+                    "website": "Chief Albert Luthuli Local Municipality, "+
+                    	"Dipaleseng Local Municipality, "+
+                    	"Dr Pixley Ka Isaka Seme Local Municipality, "+
+                    	"Govan Mbeki Local Municipality, "+
+                    	"Lekwa Local Municipality, Mkhondo Local Municipality, Msukaligwa Local Municipality",
+                    "phone": "013 759 9111",
+                    "lat":-26.437465,  
+                    "lng": 29.961598},
+            
+           {
+           	"title": "NkangalaDistrictMunicipality",
+               "website": "Dr JS Moroka Local Municipality, "+
+               	"Emakhazeni Local Municipality, "+
+               	"Emalahleni Local Municipality, "+
+               	"Steve Tshwete Local Municipality, "+
+               	"Thembisile Hani Local Municipality, Victor Khanye Local Municipality",
+               "phone": "013 759 9111",
+               "lat": -25.851386,   
+               "lng": 29.598560},
+               
+         {
+            	"title": "Ekandustria",
+                "website": "Dr JS Moroka Local Municipality, "+
+                	"Emakhazeni Local Municipality, "+
+                	"Emalahleni Local Municipality, "+
+                	"Steve Tshwete Local Municipality, "+
+                	"Thembisile Hani Local Municipality, Victor Khanye Local Municipality",
+                "phone": "013 759 9111",
+                "lat": -25.696683,    
+                "lng": 28.702852}
+]
+    };
+    $.each(json1.universities, function (key, data) {
+
+        var latLng = new google.maps.LatLng(data.lat, data.lng);
+
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            // icon: icon,
+            title: data.title
+        });
+
+        var details = data.title;
+
+        bindInfoWindow(marker, map,details);
+
+        //    });
+
+    });
+
+}
+
+function bindInfoWindow(marker, map,strDescription) {
+	
+    google.maps.event.addListener(marker, 'click', function () {
+        //infowindow.setContent(strDescription);
+        //infowindow.open(map, marker);
+    	 $('#'+strDescription).modal('show');
+    	 //alert("Hello! I am an alert box!!");
+    });
+}
+
+//google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr99gw358x0fx-PzfdagyIeoQYE7SIGYA&amp;callback=myMap"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&amp;destination=Montreal&amp;key=AIzaSyDP4r-GUwuymBQh-j8lMIeKLMtj0PFzhao"></script> -->
+</html>

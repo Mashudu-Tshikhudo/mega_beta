@@ -1,0 +1,284 @@
+@CHARSET "ISO-8859-1";
+
+
+/* Set gray background color and 100% height */
+.sidenav {
+	background-color: #fcc332;
+	height: 650px;
+}
+/*Set navbar background color*/
+.navbar {
+	background-color: #555;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		/* height: auto; */
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+
+.output-panel {
+	position: relative;
+	height: 100%;
+	margin-top: -16px;
+	margin-left: -16px;
+	background-color: #f7f7f7;
+}
+
+.btn-sm {
+	min-width: 150px;
+	max-width: 150px;
+	background-color: #a8a8a8;
+}
+
+.myheading {
+	font-family: 'DinMedium', sans-serif;
+	font-size: 30px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	color: #8d8379;
+	display: block;
+}
+#searchresults{
+	margin-left: 20px;
+    width: 1338px;
+    height: 545px;
+    overflow-y: auto;
+}
+
+#filterresults{
+	margin-left: 20px;
+    width: 1338px;
+    height: 545px;
+    overflow-y: auto;
+}
+
+#conceptinfo{
+	
+	position: absolute;
+    width: 700px;
+    top: -0px;
+    right: -327px;
+}
+
+th{
+	text-align: center;
+	width:20%;
+}
+
+td{
+	text-align: center;
+	width:20%;
+}
+
+#thcolumn{
+	text-align: left;
+	width:20%;
+}
+
+
+
+       
+/* second css */
+.node {
+	stroke: #222;
+	stroke-width: 1.5px;
+}
+
+.node.actor {
+	fill: #888;
+}
+
+.node.movie {
+	fill: #BBB;
+}
+
+.link {
+	stroke: #999;
+	stroke-opacity: .6;
+	stroke-width: 1px;
+}
+
+caption { 
+    display: table-caption;
+    text-align: center;
+    text-transform: uppercase;
+    background-color:#98c11d;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #98c11d;
+}
+footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   color: #77b300;
+   
+}
+
+#visited{
+	 color: white;
+}
+#dropdownheader{
+	font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    color: #8d8379;
+	
+}
+#tableheader{
+	font-family: 'DinMedium', sans-serif;
+	font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    color: rgba(101, 109, 117, 0.96);
+}
+
+/*Welcome Page css  */
+
+#myicons {
+	position: absolute;
+    top: 150px;
+}
+
+/*Modal*/
+
+.container-box
+{
+	display:inline-block; 
+	padding:10px; 
+	background: rgba(255, 255, 255, .8);
+	border: 1px solid #fff;	
+	position: fixed;
+  	top: 55%;
+  	left: 0;
+
+}
+
+.modal-content
+{
+	background: rgba(255, 255, 255, .7);	
+}
+
+
+.rotated
+{
+	-moz-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
+    -webkit-transform:rotate(-90deg);
+    transform-origin: top left;  
+}
+.btn-success{
+	background-color:#98c11d;
+	border-color:#98c11d;
+	
+}
+
+#searchbutton{
+	background-color:#98c11d;
+	border-color:#98c11d;
+	position: relative;
+    left: -4px;
+    top: 111px;
+}
+.modal-content {
+    
+    width: 430px;
+    height: 430px;
+}
+
+#funding{
+	position: relative;
+    left: 32px;
+}
+#municipality{
+	position: relative;
+    left: 32px;
+    top: 25px;
+}
+#region{
+	position: relative;
+    left: 32px;
+    top: 48px;
+}
+#business{
+	position: relative;
+    left: 32px;
+    top: 73px;
+}
+#instruction{
+	text-align:center;
+}
+#tableheading{
+	background-color: #95A5A6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.0em;
+}
+
+#example-table{
+	height: 292px;
+    margin-left: -30px;
+    position: absolute;
+    right: -262px;
+    top: 73px;
+}
+
+#office_table{
+	margin-left: -30px;
+    position: absolute;
+    right: -321px;
+    top: -13px;
+}
+
+#corporate_table{
+	margin-left: -30px;
+    position: absolute;
+    right: -321px;
+    top: -13px;
+}
+
+#finance_table{
+	margin-left: -30px;
+    position: absolute;
+    right: -321px;
+    top: -13px;
+}
+
+#strategy_table{
+	margin-left: -30px;
+    position: absolute;
+    right: -321px;
+    top: -13px;
+}
+
+#properties_table{
+	margin-left: -30px;
+    position: absolute;
+    right: -321px;
+    top: -13px;
+}
+
+#funding_table{
+	margin-left: -30px;
+    position: absolute;
+    right: -321px;
+    top: -13px;
+}
